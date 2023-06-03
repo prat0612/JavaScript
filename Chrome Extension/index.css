@@ -21,17 +21,10 @@ button {
     color: white;
     background-color: #5f9341;
 }
-button:hover {
-    border-color: aqua;
-}
-/* #input-btn {
-    color: white;
-    background-color: #5f9341;
-}
-#delete-btn {
+button:active {
     color: #5f9341;
     background-color: white;
-} */
+}
 ul {
     list-style: none;
     padding: 5px;
