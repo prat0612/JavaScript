@@ -1,30 +1,41 @@
 // chrome://extensions/ 
-let myLeads = []
+let myList = []
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
+const localList = JSON.parse(localStorage.getItem("List"))
 
-function addLeads() {
-    myLeads.push(inputEl.value)
-    inputEl.value = ""
-    renderLeads()
+// fetch and display list if localStorage has inputs
+if (localList) {
+    myList = localList 
+    displayList()
 }
-inputBtn.addEventListener("click", function() {
-    addLeads()
+inputBtn.addEventListener("click", addList)
+inputEl.addEventListener("keypress", function(event){
+    if (event.code === "Enter")
+        addList()
 })
-inputEl.addEventListener("keypress", function() {
-    if (event.code === 'Enter') {
-        event.preventDefault()
-        addLeads()
+deleteBtn.addEventListener("click", deleteList)
+
+function addList() {
+    myList.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("List", JSON.stringify(myList))
+    displayList()  
+}
+function deleteList() {
+    alert("Are you sure you want to delete List?")
+    localStorage.removeItem("List")
+    myList = []
+    displayList()
+}
+function displayList() {
+    let listHTML = ""
+    for (let i=0; i<myList.length; i++) {
+        listHTML += `<li>
+                        <a href="${myList[i]}" target="_blank"> ${myList[i]} </a>
+                    </li>`
     }
-})
-function renderLeads() {
-    let list = ""
-    for (let i=0; i<myLeads.length; i++) {
-        list += `<li>
-                    <a href="${myLeads[i]}" target="_blank"> ${myLeads[i]} </a> 
-                </li>`
-    }
-    console.log(list)
-    ulEl.innerHTML = list
+    ulEl.innerHTML = listHTML
 }

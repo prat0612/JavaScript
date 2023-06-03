@@ -11,16 +11,27 @@ input {
     border: 1px solid #5f9341;
     padding: 10px;
     border-radius: 2px;
+    margin-bottom: 4px;
 }
 button {
-    font-weight: 600;
-    margin-top: 5px;
-    padding: 10px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #5f9341;
+    border-radius: 2px;
     color: white;
     background-color: #5f9341;
-    border: 0px;
-    border-radius: 2px;
 }
+button:hover {
+    border-color: aqua;
+}
+/* #input-btn {
+    color: white;
+    background-color: #5f9341;
+}
+#delete-btn {
+    color: #5f9341;
+    background-color: white;
+} */
 ul {
     list-style: none;
     padding: 5px;
