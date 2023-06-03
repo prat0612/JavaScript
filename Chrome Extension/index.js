@@ -31,11 +31,11 @@ function addList() {
 }
 
 function addTab() {
-    chrome.tabs.query({active: true, currentWindow: true, function(tabs) {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         myList.push(tabs[0].url)
-        localList.setItem("List", JSON.stringify(myList))
+        localStorage.setItem("List", JSON.stringify(myList))
         displayList()
-    } })
+    })
 }
 
 function deleteList() {
